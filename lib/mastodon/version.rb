@@ -38,7 +38,7 @@ module Mastodon
 
     # specify git tag or commit hash here
     def source_tag
-      nil
+      `git rev-parse HEAD`
     end
 
     def source_url
