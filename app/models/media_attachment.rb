@@ -116,7 +116,7 @@ class MediaAttachment < ApplicationRecord
             convert_options: {
               output: {
                 'movflags' => 'faststart',
-                'codec' => 'copy',
+                'vcodec' => 'copy',
               },
             },
           },
