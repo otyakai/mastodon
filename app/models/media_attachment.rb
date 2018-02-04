@@ -108,6 +108,19 @@ class MediaAttachment < ApplicationRecord
             },
           },
         }
+      elsif f.instance.file_content_type == 'video/quicktime'
+        {
+          small: IMAGE_STYLES[:small],
+          original: {
+            format: 'mp4',
+            convert_options: {
+              output: {
+                'movflags' => 'faststart',
+                'codec' => 'copy',
+              },
+            },
+          },
+        }
       elsif IMAGE_MIME_TYPES.include? f.instance.file_content_type
         IMAGE_STYLES
       else
