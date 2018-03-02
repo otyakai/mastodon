@@ -139,7 +139,7 @@ class MediaAttachment < ApplicationRecord
         }
       elsif f.instance.file_content_type == 'video/quicktime'
         {
-          small: IMAGE_STYLES[:small],
+          small: VIDEO_STYLES[:small],
           original: {
             format: 'mp4',
             convert_options: {

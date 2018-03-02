@@ -7,6 +7,11 @@ module Paperclip
     def make
       meta = ::Av.cli.identify(@file.path)
       attachment.instance.type = MediaAttachment.types[:gifv] unless meta[:audio_encode]
+      
+      if attachment.instance.file_content_type == 'video/quicktime'
+        attachment.instance.file_file_name    = File.basename(attachment.instance.file_file_name, '.*') + '.mp4'
+        attachment.instance.file_content_type = 'video/mp4'
+      end
 
       Paperclip::Transcoder.make(file, options, attachment)
     end
